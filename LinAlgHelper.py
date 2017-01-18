@@ -21,9 +21,6 @@ class AugmentedMatrix():
 
         return 0
 
-    def get_leading_num(self, row):
-        return self.matrix[row][self.get_leading_col(row)]
-
     def floats_to_ints(self):
         for i in range(self.rows):
             for x in range(self.cols):
@@ -56,15 +53,14 @@ class AugmentedMatrix():
 
     def scale(self):
         for row in range(self.rows):
-            if self.get_leading_num(row) < 1.0 and\
-                    self.get_leading_num(row) > -1.0:
-                divisor = self.get_leading_num(row)
-            elif self.get_leading_num(row) == 0 or\
-                    self.get_leading_num(row) == 1:
+            leading_num = self.matrix[row][self.get_leading_col(row)]
+            if leading_num < 1.0 and leading_num > -1.0:
+                divisor = leading_num
+            elif leading_num == 0 or leading_num == 1:
                 continue
             else:
                 divisor = abs(reduce(lambda x,y: gcd(x, y), self.matrix[row]))
-                if self.get_leading_num(row) < 0:
+                if leading_num < 0:
                     divisor *= -1
 
             for i in range(self.cols):
