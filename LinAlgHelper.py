@@ -21,6 +21,13 @@ class AugmentedMatrix():
 
         return 0
 
+    def get_col(self, col):
+        col_vals = []
+        for row in range(self.rows):
+            col_vals.append(self.matrix[row][col])
+
+        return col_vals
+
     def floats_to_ints(self):
         for i in range(self.rows):
             for x in range(self.cols):
@@ -34,6 +41,9 @@ class AugmentedMatrix():
         print('----------------------')
 
     def swap(self, row1, row2):
+        for col in range(self.cols):
+            
+
         for i in range(self.cols):
             num1 = self.matrix[row1][i]
             num2 = self.matrix[row2][i]
@@ -69,14 +79,16 @@ class AugmentedMatrix():
         self.floats_to_ints()
         self.print_matrix()
 
-    def get_echelon_form(self):
-        matrix = self.matrix
-        matrix.scale()
-        working_column = 0
-        # for i in range(self.rows):
-        #     if matrix[i][working_column] == 1 and i < :
-
-        return matrix
+    # def get_echelon_form(self):
+    #     matrix = self.matrix
+    #     is_echelon_form = False
+    #     while is_echelon_form is False:
+    #         matrix.scale()
+    #         for col in range(matrix.cols):
+    #             for row in range(matrix.rows):
+    #                 if
+    #
+    #     return matrix
 
 
 
